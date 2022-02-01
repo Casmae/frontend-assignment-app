@@ -1,0 +1,95 @@
+<main class="container">
+  <div class="grid-container">
+    <div class="grid-item"></div>
+
+  </div>
+
+  <div class="grid-container">
+    <div class="grid-item"></div>
+    <div class="grid-item">
+
+      <h6>Devoirs rendus
+        <hr>
+      </h6>
+      <div class="first">
+
+        <div *ngFor="let item of done">
+          <mat-card class="second">
+
+            <div class="third">
+              <mat-card-title>
+                <mat-list-item>
+                  <div class="logo">
+                    <img mat-card-sm-image
+                      src="https://1.bp.blogspot.com/-BgNSRDiOL-w/V-kRKv8UC0I/AAAAAAAADbA/maiZAlN8u-s-xZC5dKGh_3-H977HKv0YQCLcB/s1600/logo%2B%25281%2529.png"
+                      class="image-card">
+                  </div>
+                  <a routerLink="/assignment/{{item.id}}">
+                    <span class="title">Devoir : {{item.nom | uppercase }}</span>
+                  </a>
+                  <div class="date">Date : {{item.dateDeRendu | date}}</div>
+                  <br>
+                  <span class="name">Nom de l'auteur : {{item.auteur}}</span><br>
+                  <div class="name">
+                    {{item.remarque}}
+                  </div>
+                </mat-list-item>
+
+              </mat-card-title>
+            </div>
+          </mat-card>
+          <mat-divider></mat-divider>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="grid-item">
+
+      <h6>Devoirs non Rendus
+        <hr>
+      </h6>
+      <div class="first">
+        <div *ngFor="let item of todo">
+          <mat-card class="second">
+
+            <div class="third">
+              <mat-card-title>
+                <mat-list-item>
+                  <div class="logo">
+                    <img mat-card-sm-image
+                      src="https://1.bp.blogspot.com/-BgNSRDiOL-w/V-kRKv8UC0I/AAAAAAAADbA/maiZAlN8u-s-xZC5dKGh_3-H977HKv0YQCLcB/s1600/logo%2B%25281%2529.png"
+                      class="image-card">
+                  </div>
+
+
+                  <a routerLink="/assignment/{{item.id}}">
+                    <span class="title">Devoir : {{item.nom | uppercase }}</span>
+                  </a>
+                  <div class="date">Date: {{item.dateDeRendu | date}}</div>
+                  <br>
+                  <span class="name">Nom de l'auteur : {{item.auteur}}</span><br>
+                  <div class="name">
+                    {{item.remarque}}
+                  </div>
+                </mat-list-item>
+              </mat-card-title>
+            </div>
+          </mat-card>
+          <mat-divider></mat-divider>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pageBtn">
+    <div class="backBtn">
+      <button mat-flat-button color="primary" (click)="pagePrecedente()" [disabled]="!hasPrevPage">
+        <mat-icon>keyboard_arrow_left</mat-icon>Précédent
+      </button>
+    </div>
+    <div class="nextBtn">
+      <button mat-flat-button color="primary" (click)="pageSuivante()" [disabled]="!hasNextPage">Suivant<mat-icon>
+          keyboard_arrow_right</mat-icon></button>
+    </div>
+  </div>
+</main>

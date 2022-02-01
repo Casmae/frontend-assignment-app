@@ -1,0 +1,28 @@
+<form ngForm class="logInForm">
+    <div class="first">
+        <h1>Assignments App</h1>
+        <h3>Please login!</h3>
+        <img class="user-avatar"
+            src="" />
+
+    </div>
+    <div>
+        <mat-form-field class="form-group">
+            <mat-label>Name</mat-label>
+            <input class="inp" matInput   name="username" [(ngModel)]="user.username">
+        </mat-form-field>
+        <br>
+        <mat-form-field class="form-group">
+            <mat-label>Password</mat-label>
+            <input class="inp" matInput type="password" name="password" [(ngModel)]="user.password">
+
+        </mat-form-field>
+        
+        <div class="row justify-content-md-center">
+            <button mat-raised-button color="primary" type="submit" (click)="onLoggedin()" >Connexion</button>
+        </div>
+    
+
+    </div>
+
+</form>

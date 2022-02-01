@@ -1,0 +1,30 @@
+<mat-card *ngIf="assignmentTransmis">
+  <mat-card-title-group>
+    <mat-card-title>Examen de : {{assignmentTransmis.nom}}</mat-card-title>
+    <mat-card-subtitle>Rendu le : <strong>{{assignmentTransmis.dateDeRendu | date: 'dd/MM/yyyy'}}</strong></mat-card-subtitle>
+    <h1>Note : {{assignmentTransmis.note}}/20</h1>
+  </mat-card-title-group>
+  <mat-card-content>
+    <strong>REMARQUE <br></strong>
+    {{assignmentTransmis.remarque}}
+  </mat-card-content>
+
+
+    <mat-card   *ngIf="assignmentTransmis">
+      <div>
+        <div><img class="imageProf" src="{{getMatiereById(assignmentTransmis.matiere).profImage}}" ></div>
+        <mat-card-title>Matière : {{getMatiereById(assignmentTransmis.matiere).label}}</mat-card-title>
+        <mat-card-title>Professeur : {{getMatiereById(assignmentTransmis.matiere).profName}}</mat-card-title>
+        
+
+      </div>
+      <div *ngIf="authService.isAdmin()">
+    <mat-checkbox   *ngIf='!assignmentTransmis.rendu' (click)="onAssignmentRendu()">
+      Rendu
+    </mat-checkbox>
+<div class="btn1">
+    <button mat-stroked-button  color="primary" (click)="onClickEdit()">EDIT</button></div>
+<div class="btn2">
+    <button mat-raised-button  color="warn" (click)="onDelete()">DELETE</button></div></div>
+ 
+</mat-card>

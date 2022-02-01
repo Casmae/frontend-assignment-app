@@ -1,0 +1,23 @@
+<mat-toolbar class="toolbar" *ngIf="authService.isloggedIn" >
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+  <mat-icon>menu</mat-icon>
+  </button>
+  <span class="title">Application de gestion des devoirs</span>
+  <div>
+      <a routerLink="/home"><button class="link" mat-button color="accent" *ngIf="authService.isloggedIn" >Assignments List</button></a>
+      <a routerLink="/add"><button class="link" *ngIf="authService.isAdmin()" mat-button color="accent" >Ajouter un devoir</button></a>
+      <a *ngIf="authService.isAdmin()"><button class="link" (click)="peuplerBD()" *ngIf="authService.isloggedIn" mat-button color="accent" >PeuplerBD</button></a>
+      <a routerLink="/login"><button class="link" (click)="logout()" *ngIf="authService.isloggedIn" mat-button color="accent" >Logout</button></a>
+     
+
+     
+     
+      
+  </div>
+
+</mat-toolbar>
+
+<!--
+<app-assignments></app-assignments>
+-->
+<router-outlet></router-outlet>

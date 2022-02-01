@@ -1,0 +1,40 @@
+<form ngForm [formGroup]="assignmentsForm"  class="form" (submit)="onSubmit($event); assignmentsForm.reset()" >
+  <mat-form-field>
+    <mat-label>Nom du devoir</mat-label>
+    <input required matInput formControlName="nom" [(ngModel)]="nom" name="nom" placeholder="Nom du devoir">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Date de rendu</mat-label>
+    <input required matInput [matDatepicker]="picker" [(ngModel)]="dateDeRendu" name="dateRendu">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field >
+    <mat-label>Matière</mat-label>
+    <mat-select  formControlName="matiere">
+      <mat-option *ngFor="let matiere of listeDesMatieres"  [value]="matiere.id"  >
+        {{matiere.label}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Nom de l'auteur</mat-label>
+    <input required matInput [(ngModel)]="auteur" formControlName="auteur" name="auteur" placeholder="Nom de l'auteur">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Note sur 20</mat-label>
+    <input matInput formControlName="note" [(ngModel)]="note" name="note" placeholder="Note sur 20" type="number" min="0" max="20">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Remarque</mat-label>
+    <textarea matInput formControlName="remarque"  [(ngModel)]="remarque" name="remarque" rows="3" placeholder="Remarque" ></textarea>
+  </mat-form-field>
+  <mat-slide-toggle  color="primary" (change)="renduStatus()" >Rendu</mat-slide-toggle><br>
+  <div class="row justify-content-md-center">
+    <button mat-raised-button color="primary" type="submit"  >Ajouter</button>
+</div>
+
+ 
+</form>
